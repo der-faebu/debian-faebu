@@ -16,17 +16,13 @@ apt upgrade -y
 # Install nala
 apt install nala -y
 
-
 # Installing Essential Programs 
-nala install openssh-server ufw
-# Installing Other less important Programs
-nala install xclip neofetch flameshot psmisc mangohud vim lxappearance papirus-icon-theme lxappearance fonts-noto-color-emoji lightdm dmenu -y
+nala install openssh-server ufw ca-certificates curl gnupg
 
 # Install Docker engine
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do nala remove $pkg; done
 ## Add Docker's official GPG key:
 nala update
-nala install ca-certificates curl gnupg
 install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 chmod a+r /etc/apt/keyrings/docker.gpg
