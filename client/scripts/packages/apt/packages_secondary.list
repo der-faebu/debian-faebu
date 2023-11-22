@@ -19,3 +19,6 @@ virt-manager
 trash
 vlc
 grub-customizer
+pip
+python3.11-venv
+lshw
