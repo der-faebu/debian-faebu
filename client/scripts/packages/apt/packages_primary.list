@@ -7,6 +7,8 @@ nitrogen
 lxpolkit
 x11-xserver-utils
 unzip
+gpg
+curl
 wget
 pulseaudio
 pavucontrol
@@ -17,3 +19,4 @@ libxft-dev
 libxinerama-dev
 libx11-xcb-dev
 xorg
+apt-transport-https
