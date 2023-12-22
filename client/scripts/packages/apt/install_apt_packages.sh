@@ -13,5 +13,7 @@ apt upgrade -y
 
 apt install nala -y
 
+echo -e "${YELLOW}Installing primary packages"
 nala install -y $(cat ${SCRIPT_DIR}/packages_primary.list) --no-fix-broken
+echo -e "${YELLOW}Installing secondary packages"
 nala install -y $(cat ${SCRIPT_DIR}/packages_secondary.list) --no-fix-broken

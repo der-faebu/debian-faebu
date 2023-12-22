@@ -33,7 +33,7 @@ usermod -aG $username libvirt
 usermod -aG $username kvm
 
 # Making .config and Moving config files and background to Pictures
-bash $script_root/scripts/configs/set_configs.sh
+bash $script_root/scripts/configs/set_configs.sh 
 
 # Download Nordic Theme
 cd /usr/share/themes/
