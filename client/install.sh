@@ -6,10 +6,27 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
+#----------------------------------------#
+# Setup colours #
+
+BLACK="\033[0;30m"        # Black
+RED="\033[0;31m"          # Red
+GREEN="\033[0;32m"        # Green
+YELLOW="\033[0;33m"       # Yellow
+BLUE="\033[0;34m"         # Blue
+PURPLE="\033[0;35m"       # Purple
+CYAN="\033[0;36m"         # Cyan
+WHITE="\033[0;37m"        # White
+
+#----------------------------------------#
+
 username=$(id -u -n 1000)
 script_root=$(pwd)
 
+echo -e "${YELLOW}Setting up try/catch"
 bash $script_root/scripts/trycatch.sh
+
+echo -e "${YELLOW}Installing apt packages"t
 bash $script_root/scripts/packages/apt/install_apt_packages.sh
 
 usermod -aG $username libvirt
