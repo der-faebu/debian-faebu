@@ -26,7 +26,7 @@ script_root=$(pwd)
 echo -e "${YELLOW}Setting up try/catch"
 bash $script_root/scripts/trycatch.sh
 
-echo -e "${YELLOW}Installing apt packages"t
+echo -e "${YELLOW}Installing apt packages"
 bash $script_root/scripts/packages/apt/install_apt_packages.sh
 
 usermod -aG $username libvirt
