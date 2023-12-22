@@ -13,5 +13,5 @@ apt upgrade -y
 
 apt install nala -y
 
-nala install -y $(cat ${SCRIPT_DIR}/packages_primary.list)
-nala install -y $(cat ${SCRIPT_DIR}/packages_secondary.list)
+nala install -y $(cat ${SCRIPT_DIR}/packages_primary.list) --no-fix-broken
+nala install -y $(cat ${SCRIPT_DIR}/packages_secondary.list) --no-fix-broken
