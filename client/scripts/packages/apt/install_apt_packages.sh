@@ -6,12 +6,12 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-local_root=$(pwd)
+SCRIPT_DIR=$(pwd)
 
 apt update
 apt upgrade -y
 
 apt install nala -y
 
-nala install -y $(cat ${local_root}/packages_primary.list)
-nala install -y $(cat ${local_root}local_root/packages_secondary.list)
+nala install -y $(cat ${SCRIPT_DIR}/packages_primary.list)
+nala install -y $(cat ${SCRIPT_DIR}local_root/packages_secondary.list)
