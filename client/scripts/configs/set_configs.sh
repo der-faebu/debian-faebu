@@ -11,8 +11,8 @@ cd $builddir
 mkdir /home/$username/.config
 cp -R $builddir/dotconfig/config_files/* /home/$username/.config/
 
-cp $builddir/.bashrc /home/$username/.bashrc
-cp $builddir/.bash_logout /home/$username/.bash_logout
-cp $builddir/.bash_aliases /home/$username/.bash_aliases
+cp -i $builddir/dotconfig/bash/.bashrc /home/$username/.bashrc
+cp -i $builddir/dotconfig/bash/.bash_logout /home/$username/.bash_logout
+cp -i $builddir/dotconfig/bash/.bash_aliases /home/$username/.bash_aliases
 
 chown -R $username:$username /home/$username
