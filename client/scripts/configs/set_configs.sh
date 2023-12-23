@@ -16,3 +16,4 @@ cp -f $builddir/dotconfig/bash/.bash_logout /home/$username/.bash_logout
 cp -f $builddir/dotconfig/bash/.bash_aliases /home/$username/.bash_aliases
 
 chown -R $username:$username /home/$username
+source /home/$username/.bashrc
