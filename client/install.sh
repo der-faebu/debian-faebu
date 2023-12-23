@@ -38,7 +38,7 @@ echo -e "${YELLOW}Setting up flatpak."
 bash $script_root/scripts/packages/flatpak/setup_flatpak.sh
 
 echo -e "${YELLOW}Installing flatpaks."
-bash $script_root/scripts/packages/flatpak/install_flatpak.sh
+bash $script_root/scripts/packages/flatpak/install_flatpaks.sh
 
 # Reloading Font
 fc-cache -vf
