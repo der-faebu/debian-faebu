@@ -34,6 +34,12 @@ usermod -aG $username kvm
 
 bash $script_root/scripts/configs/set_configs.sh $script_root
 
+echo -e "${YELLOW}Setting up flatpak."
+bash $script_root/scripts/packages/flatpak/setup_flatpak.sh
+
+echo -e "${YELLOW}Installing flatpaks."
+bash $script_root/scripts/packages/flatpak/install_flatpak.sh
+
 # Reloading Font
 fc-cache -vf
 
