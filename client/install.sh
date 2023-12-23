@@ -21,7 +21,7 @@ WHITE="\033[0;37m"        # White
 #----------------------------------------#
 
 username=$(id -u -n 1000)
-script_root=$(pwd)
+script_root=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 echo -e "${YELLOW}Setting up try/catch"
 bash $script_root/scripts/trycatch.sh
@@ -35,32 +35,9 @@ usermod -aG $username kvm
 # Making .config and Moving config files and background to Pictures
 bash $script_root/scripts/configs/set_configs.sh 
 
-# Download Nordic Theme
-cd /usr/share/themes/
-git clone https://github.com/EliverLara/Nordic.git
-
-# Installing fonts
-mkdir -p /home/$username/.local/share/fonts
-cd $script_root 
-nala install fonts-font-awesome -y
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-unzip FiraCode.zip -d /home/$username/.local/share/fonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-unzip Meslo.zip -d /home/$username/.local/share/fonts
-mv dotfonts/fontawesome/otfs/*.otf /home/$username/.local/share/fonts
-chown $username:$username /home/$username/.local/share/fonts*
-
 # Reloading Font
 fc-cache -vf
-# Removing zip Files
-rm ./FiraCode.zip ./Meslo.zip
-
-# Install Nordzy cursor
-git clone https://github.com/alvatip/Nordzy-cursors
-cd Nordzy-cursors
-./install.sh
-cd $script_root
-rm -rf Nordzy-cursors
 
 # Use nala
 bash $script_root/scripts/configs/usenala.sh
+
