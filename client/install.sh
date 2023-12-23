@@ -32,8 +32,7 @@ bash $script_root/scripts/packages/apt/install_apt_packages.sh
 usermod -aG $username libvirt
 usermod -aG $username kvm
 
-# Making .config and Moving config files and background to Pictures
-bash $script_root/scripts/configs/set_configs.sh 
+bash $script_root/scripts/configs/set_configs.sh $script_root
 
 # Reloading Font
 fc-cache -vf
