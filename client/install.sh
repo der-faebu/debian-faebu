@@ -29,9 +29,6 @@ bash $script_root/scripts/trycatch.sh
 echo -e "${YELLOW}Installing apt packages"
 bash $script_root/scripts/packages/apt/install_apt_packages.sh
 
-usermod -aG $username libvirt
-usermod -aG $username kvm
-
 bash $script_root/scripts/configs/set_configs.sh $script_root
 
 echo -e "${YELLOW}Setting up flatpak."

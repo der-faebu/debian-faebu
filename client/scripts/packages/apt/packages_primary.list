@@ -22,3 +22,6 @@ libxinerama-dev
 libx11-xcb-dev
 xorg
 apt-transport-https
+vlc
+dnsutils
+net-tools

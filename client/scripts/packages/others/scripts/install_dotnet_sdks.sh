@@ -11,6 +11,6 @@ dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 
 nala update && \
-  nala install -y dotnet-sdk-8.0
+  nala install dotnet-sdk-8.0 -y
 
-nala install -y aspnetcore-runtime-8.0
+nala install aspnetcore-runtime-8.0 -y

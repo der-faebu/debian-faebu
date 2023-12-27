@@ -12,4 +12,4 @@ mkdir -p /etc/debsig/policies/AC2D62742012EA22/
 curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
 mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
 nala update
-nala install 1password
+nala install 1password -y

@@ -7,6 +7,6 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 wget https://dl.thorium.rocks/debian/dists/stable/thorium.list
-sudo mv thorium.list /etc/apt/sources.list.d/
-sudo nala update
-sudo nala install thorium-browser -y
+mv thorium.list /etc/apt/sources.list.d/
+nala update
+nala install thorium-browser -y

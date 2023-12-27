@@ -21,3 +21,8 @@ pip
 python3.11-venv
 lshw
 kde-plasma-desktop
+cifs-utils
+htop
+protontricks
+zenity
+p7zip-full
