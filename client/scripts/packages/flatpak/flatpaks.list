@@ -3,7 +3,7 @@ flathub com.spotify.Client
 flathub org.signal.Signal
 flathub net.lutris.Lutris
 flathub com.getpostman.Postman
-flathub org.remmina.Remminaflatpak install flathub org.jdownloader.JDownloader
+flathub org.jdownloader.JDownloader
 flathub tv.plex.PlexDesktop
 flathub org.kde.konsole
 flathub org.flameshot.Flameshot
