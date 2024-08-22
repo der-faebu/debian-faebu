@@ -13,6 +13,7 @@ if [ "$#" != 1 ]; then
   echo "Usage: $0 <username|user_id>"
   exit 2
 fi
+
 username=$(id -un $1)
 #----------------------------------------#
 # Setup colours #
@@ -40,4 +41,4 @@ echo -e "${YELLOW}Installing essential programs"
 bash $script_root/scripts/apt/install_package_list.sh install primary
 
 echo -e "${YELLOW}Setting up docker"
-bash $script_root/scripts/setup_docker.sh
+bash $script_root/scripts/setup_docker.sh $username

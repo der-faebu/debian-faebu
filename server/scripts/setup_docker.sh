@@ -1,11 +1,18 @@
 #!/bin/bash
 
 set -e
+username=$1
 
 # Check if Script is Run as Root
 if [[ $EUID -ne 0 ]]; then
   echo "You must be a root user to run this script, please run sudo ./install.sh" 2>&1
   exit 1
+fi
+
+if [ "$#" != 1 ]; then
+  echo "You must use exactly 1 argument: username or user id"
+  echo "Usage: $0 <username|user_id>"
+  exit 2
 fi
 
 script_root=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -33,4 +40,4 @@ nala upgrade -y
 bash $script_root/apt/install_package_list.sh remove docker
 bash $script_root/apt/install_package_list.sh install docker
 
-usermod -aG docker $USER
+usermod -aG docker $username
