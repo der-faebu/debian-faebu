@@ -30,7 +30,7 @@ WHITE="\033[0;37m"        # White
 #----------------------------------------#
 script_root=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-username=$(id -u $1)
+username=$(id -un $1)
 builddir=$(pwd)
 
 echo "$username"
