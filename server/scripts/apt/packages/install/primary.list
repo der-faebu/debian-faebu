@@ -1,0 +1,11 @@
+dnsutils
+net-tools
+unzip
+gpg
+curl
+wget
+apt-transport-https
+openssh-server
+ufw
+ca-certificates
+gnupg

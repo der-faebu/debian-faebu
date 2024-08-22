@@ -1,45 +1,43 @@
 #!/bin/bash
 
+set -e
+
 # Check if Script is Run as Root
 if [[ $EUID -ne 0 ]]; then
   echo "You must be a root user to run this script, please run sudo ./install.sh" 2>&1
   exit 1
 fi
 
-username=$(id -u -n 1000)
+if [ "$#" != 1 ]; then
+  echo "You must use exactly 1 argument: username or user id"
+  echo "Usage: $0 <username|user_id>"
+  exit 2
+fi
+username=$(id -un $1)
+#----------------------------------------#
+# Setup colours #
+
+BLACK="\033[0;30m"        # Black
+RED="\033[0;31m"          # Red
+GREEN="\033[0;32m"        # Green
+YELLOW="\033[0;33m"       # Yellow
+BLUE="\033[0;34m"         # Blue
+PURPLE="\033[0;35m"       # Purple
+CYAN="\033[0;36m"         # Cyan
+WHITE="\033[0;37m"        # White
+
+#----------------------------------------#
+script_root=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+username=$(id -u $1)
 builddir=$(pwd)
 
-# Update packages list and update system
-apt update
-apt upgrade -y
+echo "$username"
+echo -e "${YELLOW}Installing nala"
+bash $script_root/scripts/setup_nala.sh $username
 
-# Install nala
-apt install nala -y
+echo -e "${YELLOW}Installing essential programs"
+bash $script_root/scripts/apt/install_package_list.sh install primary
 
-# Installing Essential Programs 
-nala install openssh-server ufw ca-certificates curl gnupg -y
-
-# Docker
-for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do nala remove $pkg; done
-## Add Docker's official GPG key:
-nala update
-install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-chmod a+r /etc/apt/keyrings/docker.gpg
-
-## Add the repository to Apt sources:
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  tee /etc/apt/sources.list.d/docker.list > /dev/null
-nala update
-
-## Install Docker engine
-nala install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
-
-## Add current user to docker group
-usermod -aG docker $username
-
-##
-# Use nala
-bash scripts/usenala
+echo -e "${YELLOW}Setting up docker"
+bash $script_root/scripts/setup_docker.sh
