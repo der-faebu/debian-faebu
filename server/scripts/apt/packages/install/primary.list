@@ -9,3 +9,4 @@ openssh-server
 ufw
 ca-certificates
 gnupg
+vim
